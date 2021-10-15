@@ -1,0 +1,26 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Cuenta_Client](
+	[Id] [bigint] NOT NULL,
+	[IdClient] [bigint] NULL,
+	[Document] [varchar](100) NULL,
+	[Created] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+ALTER TABLE [dbo].[Cuenta_Client]  WITH CHECK ADD  CONSTRAINT [Fk_Cuenta_Cli] FOREIGN KEY([IdClient])
+REFERENCES [dbo].[Client] ([Id])
+GO
+
+ALTER TABLE [dbo].[Cuenta_Client] CHECK CONSTRAINT [Fk_Cuenta_Cli]
+GO
+
